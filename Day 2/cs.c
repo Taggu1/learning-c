@@ -9,7 +9,7 @@ int main(void)
 {
     float num = 100;
 
-    // Test
+    // Test ss
     printf("First Test: %5d\n", num);
     printf("First Test: %5f\n", num);
 
