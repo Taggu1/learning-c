@@ -4,9 +4,9 @@
 
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     float loan, intrest_rate, payment, balance;
+    int paymentCount = 0;
 
     printf("Enter amount of loan: ");
     scanf("%f", &loan);
@@ -16,6 +16,9 @@ int main(void)
 
     printf("Enter monthly payment: ");
     scanf("%f", &payment);
+
+    printf("Enter payment count: ");
+    scanf("%d", paymentCount);
 
     balance = loan;
 
