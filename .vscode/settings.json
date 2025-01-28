@@ -3,6 +3,7 @@
         "ctype.h": "c",
         "_ctype.h": "c",
         "bitset": "c",
-        "unordered_map": "c"
+        "unordered_map": "c",
+        "cmath": "c"
     }
 }
