@@ -14,7 +14,8 @@
 int num_in_ranks[RANKS_NUM];
 int num_in_suits[SUITS_NUM];
 bool four_of_a_kind = false, full_house = false, three_of_a_kind = false,
-pair = false, flush = false, straight_flush = false, high_card = false, straight = false;
+flush = false, straight = false;
+int pairs = 0;
 
 
 
@@ -131,7 +132,7 @@ void analyze_hand() {
             three_of_a_kind = true;
         }
         else if (num_in_ranks[i] == 2) {
-            pair = true;
+            pairs++;
         }
     }
 
@@ -145,9 +146,6 @@ void analyze_hand() {
         }
     }
 
-    if (straight && flush) {
-        straight_flush = true;
-    }
 
 }
 
@@ -155,14 +153,18 @@ void print_result() {
     if (four_of_a_kind) {
         printf("Four of a kind\n");
     }
-    else if (pair && three_of_a_kind) {
+    else if (pairs == 1 && three_of_a_kind) {
         printf("Full house\n");
     }
     else if (three_of_a_kind) {
         printf("Three of a kind\n");
 
     }
-    else if (pair) {
+    else if (pairs == 2) {
+        printf("Two pairs\n");
+
+    }
+    else if (pairs == 1) {
         printf("Pair\n");
 
     }
