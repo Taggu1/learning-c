@@ -4,6 +4,8 @@
         "_ctype.h": "c",
         "bitset": "c",
         "unordered_map": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }
