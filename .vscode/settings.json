@@ -8,6 +8,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "algorithm": "c",
-        "format": "c"
+        "format": "c",
+        "random": "c"
     }
 }
