@@ -9,6 +9,8 @@
         "stdlib.h": "c",
         "algorithm": "c",
         "format": "c",
-        "random": "c"
+        "random": "c",
+        "word.h": "c",
+        "debug.h": "c"
     }
 }
