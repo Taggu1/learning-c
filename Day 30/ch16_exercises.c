@@ -24,6 +24,9 @@ int main(void) {
     // 2.c, yes the can, in one statement
     c1 = c2;
 
-    printf("real: %.2lf, imaginary: %.2lf\n", c1.real, c1.imaginary);
+    c3.real = c1.real + c2.real;
+    c3.imaginary = c2.imaginary + c1.imaginary;
+
+    printf("real: %.2lf, imaginary: %.2lf\n", c3.real, c3.imaginary);
 
 }
