@@ -3,6 +3,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+
+// 13
+#define RECTANGLE 1
+#define CIRCLE 2
+
+// 14
+#define PI 3.14
+
 // 1, legal as long as you don't add tags
 struct { int x, y; } x;
 struct { int x, y; } y;
@@ -64,6 +72,34 @@ typedef struct {
 // 10
 typedef struct point { int x, y; } Point;
 typedef struct { Point upper_left, lower_right; } Rectangle;
+
+
+// 11
+struct {
+    double a; // 8
+    union {
+        char b[4]; // 4
+        double c; // 8
+        int d; // 4
+    } e; // 8
+    char f[4]; // 4
+} s; // 20
+
+
+// 13
+struct shape {
+    int shape_kind;
+    Point center;
+    union {
+        struct {
+            int height, width;
+        } rectangle;
+        struct {
+            int radius;
+        } circle;
+    } u;
+} s4;
+
 
 
 
@@ -145,6 +181,14 @@ Rectangle move(Rectangle r, int x, int y);
 
 // 10.d
 bool rects_collide(Rectangle p, Rectangle r);
+
+// 14.a
+int shape_area(struct shape s);
+
+
+// 14.b
+struct shape move_shape(struct shape s, int x, int y);
+
 
 int main(void) {
     // // 3.b
@@ -261,10 +305,22 @@ int main(void) {
     print_rectangle(r1);
     printf("The area of rect: %d\n", area(r1));
     printf("The center of rect: (%d,%d)\n", center(r1).x, center(r1).y);
-    // r1 = move(r1, 10, 5);
+    r1 = move(r1, 10, 5);
     print_rectangle(r1);
     printf("Rects collide: %s\n", rects_collide(r2, r1) ? "True" : "False"); // 9.c
+    printf("Size of struct: %d\n", sizeof(s)); // 11
 
+
+    // 12
+    s4.shape_kind = RECTANGLE; // 12.a LEGAL
+    s4.center.x = 10; // 12.b LEGAl
+    // s4.height // 12.c ILLEGAL
+    s4.u.rectangle.height = 10; // 12.c LEGAL
+    s4.u.rectangle.width = 8; // 12.d LEGAl
+    // s4.u.circle = 5; // 12.e ILLEGAL
+    s4.u.circle.radius = 5; // 12.e LEGAL
+    // s4.u.radius ILLEGAL
+    s4.u.circle.radius;  // 12.f LEGAl
 
 }
 
@@ -535,4 +591,38 @@ bool rects_collide(Rectangle p, Rectangle r) {
     } else {
         return false;
     }
+}
+
+// 14.a
+int shape_area(struct shape s) {
+    if (s.shape_kind == RECTANGLE) {
+        return s.u.rectangle.width * s.u.rectangle.height;
+    } else {
+        return s.u.circle.radius * s.u.circle.radius * 3.14;
+    }
+}
+
+
+// 14.b
+struct shape move_shape(struct shape s, int x, int y) {
+    return (struct shape) {
+        .shape_kind = s.shape_kind,
+            .center = (Point){
+                .x = s.center.x += x,
+                .y = s.center.y += y,
+        },
+        .u = s.u,
+    };
+}
+
+// 14.c
+struct shape scale_shape(struct shape s, double scale) {
+    if (s.shape_kind == RECTANGLE) {
+        s.u.rectangle.height *= scale;
+        s.u.rectangle.width *= scale;
+    } else {
+        s.u.circle.radius *= scale;
+
+    }
+    return s;
 }
