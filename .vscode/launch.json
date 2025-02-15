@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/taggu/learnin-c/Day 29",
-      "program": "/home/taggu/learnin-c/Day 29/build/Debug/outDebug",
+      "cwd": "/home/taggu/learnin-c/Day 33/ch16_project4",
+      "program": "/home/taggu/learnin-c/Day 33/ch16_project4/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

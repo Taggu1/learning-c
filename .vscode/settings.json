@@ -15,7 +15,10 @@
     "chrono": "c",
     "text_encoding": "c",
     "typeinfo": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "cstdlib": "c",
+    "span": "c",
+    "type_traits": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
