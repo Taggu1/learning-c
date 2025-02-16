@@ -17,6 +17,21 @@ struct node *add_to_list(struct node *list, int n);
 
 struct node *read_numbers();
 
+
+int main(void) {
+
+
+    struct node *list = read_numbers();
+
+
+    for (struct node *p = list; p != NULL; p = p->next) {
+        printf("%d ", p->data);
+    }
+    printf("\n");
+
+
+}
+
 void add_node(int data) {
     struct node *new_node;
     new_node = malloc(sizeof(struct node));
@@ -52,4 +67,28 @@ struct node *read_numbers() {
     }
     return first;
 
+}
+
+struct node *search_list(struct node *list, int n) {
+
+    for (struct node *p = list; p != NULL; p = p->next) {
+        if (p->data == n) return p;
+    }
+    return NULL;
+}
+
+struct node *delete_node(struct node *list, int n) {
+    struct node *prev;
+    struct node *cur = list;
+    for (; cur != NULL; cur = cur->next) {
+
+        if (cur->data == n && prev != NULL) {
+            prev->next = cur->next;
+            return list;
+        }
+        prev = cur;
+    }
+    if (prev == NULL) list = list->next;
+    free(cur);
+    return list;
 }
