@@ -4,6 +4,13 @@
 
 
 
+int main(void) {
+
+}
+
+
+
+
 void *my_malloc(size_t _size) {
     void *mem = malloc(_size);
 
