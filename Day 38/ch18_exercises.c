@@ -61,4 +61,5 @@ int main(void) {
     // 10
     // 10.a
     char *(*p(char *));
+
 }
